@@ -24,7 +24,7 @@ public class DemoFeignInterceptor implements RequestInterceptor {
 
         // post 요청일 경우
         final String encodedRequestBody = StringUtils.toEncodedString(template.body(), StandardCharsets.UTF_8);
-        log.info("[POST] [DemoFeignInterceptor] queries : {}", encodedRequestBody);
+        log.info("[POST] [DemoFeignInterceptor] requestBody : {}", encodedRequestBody);
 
 
         // 추가적으로 본인이 필요한 로직을 추가

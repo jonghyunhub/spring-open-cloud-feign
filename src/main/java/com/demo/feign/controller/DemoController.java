@@ -15,4 +15,9 @@ public class DemoController {
     public String getController() {
         return demonService.get();
     }
+
+    @GetMapping("/post")
+    public String postController() {
+        return demonService.post();
+    }
 }
