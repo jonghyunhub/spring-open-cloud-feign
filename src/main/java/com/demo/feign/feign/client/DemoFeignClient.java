@@ -26,4 +26,7 @@ public interface DemoFeignClient {
             @RequestHeader("CustomHeaderName") String customHeaderName,
             @RequestBody BaseRequestInfo requestInfo
             );
+
+    @GetMapping("/error") // ->  http://localhost:8080/target_server/error
+    ResponseEntity<BaseResponseInfo> callErrorDecoder();
 }

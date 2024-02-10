@@ -41,6 +41,10 @@ public class DemonService {
         log.info("Header : {}", response.getBody().getHeader());
 
         return "get";
+    }
 
+    public String errorDecoder() {
+        demoFeignClient.callErrorDecoder();
+        return "error";
     }
 }

@@ -20,4 +20,9 @@ public class DemoController {
     public String postController() {
         return demonService.post();
     }
+
+    @GetMapping("error")
+    public String errorDecoderController() {
+        return demonService.errorDecoder();
+    }
 }
