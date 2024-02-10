@@ -18,6 +18,9 @@ import java.util.Iterator;
 @Slf4j
 public class FeignCustomLogger extends Logger {
 
+    private static final int DEFAULT_SLOW_API_TIME = 3_000;
+    private static final String SLOW_API_NOTICE = "Slow api";
+
     /**
      * 로그를 남길때 어떤 포맷으로 남길지 정해주는 부분
      */
@@ -60,6 +63,10 @@ public class FeignCustomLogger extends Logger {
                             bodyLength = bodyData.length;
                             if (logLevel.ordinal() >= Logger.Level.FULL.ordinal() && bodyLength > 0) {
                                 this.log(configKey, "%s", Util.decodeOrDefault(bodyData, Util.UTF_8, "Binary data"));
+                            }
+
+                            if (elapsedTime > DEFAULT_SLOW_API_TIME) {
+                                this.log(configKey, "[%s] elapsedTime : %s",SLOW_API_NOTICE, elapsedTime);
                             }
 
                             this.log(configKey, "<--- END HTTP (%s-byte body)", bodyLength);
